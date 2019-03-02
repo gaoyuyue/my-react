@@ -8,5 +8,14 @@ describe('React Dom', () => {
             ReactDom.render(text, root);
             expect(root.firstChild.nodeValue).toBe(text);
         });
+
+        it('should render html node when input a object and with a tag attribute', () => {
+            const root = document.createElement('div');
+            ReactDom.render({
+                tag: 'div',
+            }, root);
+            expect(root.childElementCount).toBe(1);
+            expect(root.firstElementChild.tagName.toLowerCase()).toBe('div');
+        });
     });
 });
