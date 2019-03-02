@@ -2,20 +2,49 @@ import ReactDom from '../src/react-dom';
 
 describe('React Dom', () => {
     describe('render', () => {
+        let root;
+
+        beforeEach(() => {
+            root = document.createElement('div');
+        });
+
         it('should render text node when input a text ', () => {
-            const root = document.createElement('div');
             const text = "HELLO";
             ReactDom.render(text, root);
             expect(root.firstChild.nodeValue).toBe(text);
         });
 
         it('should render html node when input a object and with a tag attribute', () => {
-            const root = document.createElement('div');
             ReactDom.render({
                 tag: 'div',
             }, root);
             expect(root.childElementCount).toBe(1);
             expect(root.firstElementChild.tagName.toLowerCase()).toBe('div');
+        });
+
+        it('should have equals attribute between render and input', () => {
+            const vnode = {
+                tag: 'div',
+                attributes: {
+                    className: "hello hi",
+                    style: "text-align; color: #111",
+                    onClick: function (e) {
+                        console.log(e);
+                    },
+                    id: "divId",
+                    userId: "007",
+                    customField: "",
+                }
+            };
+            ReactDom.render(vnode, root);
+            const child = root.firstElementChild;
+            expect(child.attributes.length).toBe(4);
+            expect(child.getAttribute('class')).toBe(vnode.attributes.className);
+            expect(child.getAttribute('style')).toBe(vnode.attributes.style);
+            expect(child['onclick']).toBe(vnode.attributes.onClick);
+            expect(child.getAttribute('id')).toBe(vnode.attributes.id);
+            expect(child.getAttribute('userId')).toBe(vnode.attributes.userId);
+            expect(child.getAttribute('customField')).toBeNull();
         });
     });
 });
