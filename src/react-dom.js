@@ -22,6 +22,10 @@ export default {
             setAttribute(newNode, key, vnode.attributes[key]);
         });
 
+        vnode.children && vnode.children.forEach((vnode) => {
+            this.render(vnode, newNode);
+        });
+
         return container.appendChild(newNode)
     }
 };

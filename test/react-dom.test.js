@@ -46,5 +46,27 @@ describe('React Dom', () => {
             expect(child.getAttribute('userId')).toBe(vnode.attributes.userId);
             expect(child.getAttribute('customField')).toBeNull();
         });
+
+        it('should render children nodes when input a object and with a children attribute', () => {
+            const vnode = {
+                tag: 'div',
+                attributes: {
+                    className: "hello hi",
+                },
+                children: [
+                    {
+                        tag: 'div',
+                        attributes: {
+                            className: "hello hi",
+                        },
+                        children: [],
+                    }
+                ],
+            };
+
+            ReactDom.render(vnode, root);
+            const child = root.firstElementChild;
+            expect(child.hasChildNodes()).toBeTruthy();
+        });
     });
 });
