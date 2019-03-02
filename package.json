@@ -1,0 +1,27 @@
+{
+  "name": "my-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaoyuyue/my-react.git"
+  },
+  "keywords": [],
+  "author": "gaoyuyue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gaoyuyue/my-react/issues"
+  },
+  "homepage": "https://github.com/gaoyuyue/my-react#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.1.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^24.1.0",
+    "regenerator-runtime": "^0.13.1"
+  }
+}
