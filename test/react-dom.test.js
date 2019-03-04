@@ -1,4 +1,5 @@
 import ReactDom from '../src/react-dom';
+import React from "../src/react";
 
 describe('React Dom', () => {
     describe('render', () => {
@@ -67,6 +68,29 @@ describe('React Dom', () => {
             ReactDom.render(vnode, root);
             const child = root.firstElementChild;
             expect(child.hasChildNodes()).toBeTruthy();
+        });
+
+        it('should render component when input tag is class', () => {
+            class App extends React.Component {
+                render() {
+                    return {
+                        tag: 'div',
+                        attributes: {
+                            className: this.props.className,
+                        }
+                    }
+                }
+            }
+
+            const vnode = {
+                tag: App,
+                attributes: {
+                    className: "hello"
+                }
+            };
+            ReactDom.render(vnode, root);
+
+            expect(root.firstElementChild.getAttribute("class")).toBe(vnode.attributes.className);
         });
     });
 });
