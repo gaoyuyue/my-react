@@ -1,6 +1,6 @@
 import Component from "./react";
 
-function renderComponent(component) {
+ export function renderComponent(component) {
     const renderer = component.render();
     if (component.base && component.componentWillUpdate) {
         component.componentWillUpdate();

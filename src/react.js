@@ -6,7 +6,7 @@ export default class Component {
     }
 
     setState(state) {
-        Object.assign(this.state, state);
+        Object.assign(this.stateChange, state);
         ReactDom.renderComponent(this);
     }
 }
